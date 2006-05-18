@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.1.1a
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -10,6 +10,7 @@ License:        BSD
 URL:            http://wwwsearch.sourceforge.net/mechanize
 Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildArch:      noarch
 
 BuildRequires:  python-setuptools
 Requires:       python-clientform
@@ -60,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 17 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-3
+- Add BuildArch: noarch (bug #192155)
+
 * Sun May 14 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-2
 - Add python-abi Requires
 - Remove noarch
