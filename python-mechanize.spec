@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.1.1a
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -14,8 +14,6 @@ BuildArch:      noarch
 
 BuildRequires:  python-setuptools
 Requires:       python-clientform
-
-Requires: python-abi = %(%{__python} -c "import sys ; print sys.version[:3]")
 
 
 %description
@@ -61,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jul  9 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-4
+- Remove unnecessary python-abi requirement
+
 * Wed May 17 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-3
 - Add BuildArch: noarch (bug #192155)
 
