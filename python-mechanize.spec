@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.1.1a
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Sep  3 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-5
+- Rebuild for FC6
+
 * Sun Jul  9 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-4
 - Remove unnecessary python-abi requirement
 
