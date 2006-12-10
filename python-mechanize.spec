@@ -1,18 +1,20 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
+%define _ver 0.1.5b
+
 Name:           python-mechanize
-Version:        0.1.1a
-Release:        5%{?dist}
+Version:        0.1.5
+Release:        0.1.b%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
 License:        BSD
 URL:            http://wwwsearch.sourceforge.net/mechanize
-Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
+Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{_ver}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
-BuildRequires:  python-setuptools
+BuildRequires:  python-setuptools python-devel
 Requires:       python-clientform
 
 
@@ -35,7 +37,7 @@ Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 
 
 %prep
-%setup -q -n mechanize-%{version}
+%setup -q -n mechanize-%{_ver}
 
 
 %build
@@ -59,6 +61,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Nov 24 2006 Luke Macken <lmacken@redhat.com> - 0.1.5-0.1.b
+- Rebuild for python 2.5
+- 0.1.5b
+
 * Sun Sep  3 2006 Luke Macken <lmacken@redhat.com> - 0.1.1a-5
 - Rebuild for FC6
 
