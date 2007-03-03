@@ -1,9 +1,9 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-%define _ver 0.1.5b
+%define _ver 0.1.6b
 
 Name:           python-mechanize
-Version:        0.1.5
+Version:        0.1.6
 Release:        0.1.b%{?dist}
 Summary:        Stateful programmatic web browsing
 
@@ -61,6 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Mar  3 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.1.b
+- 0.1.6b
+
 * Fri Nov 24 2006 Luke Macken <lmacken@redhat.com> - 0.1.5-0.1.b
 - Rebuild for python 2.5
 - 0.1.5b
