@@ -4,7 +4,7 @@
 
 Name:           python-mechanize
 Version:        0.1.6
-Release:        0.1.b%{?dist}
+Release:        0.2.b%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -14,7 +14,12 @@ Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{_ver}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
-BuildRequires:  python-setuptools python-devel
+BuildRequires:  python-devel
+%if 0%{?fedora} >= 8
+BuildRequires: python-setuptools-devel
+%else
+BuildRequires: python-setuptools
+%endif
 Requires:       python-clientform
 
 
@@ -61,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Sep  2 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.2.b
+- Update for python-setuptools changes in rawhide
+
 * Sat Mar  3 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.1.b
 - 0.1.6b
 
