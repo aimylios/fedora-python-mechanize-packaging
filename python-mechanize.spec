@@ -4,7 +4,7 @@
 
 Name:           python-mechanize
 Version:        0.1.6
-Release:        0.2.b%{?dist}
+Release:        0.3.b%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -66,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 0.1.6-0.3.b
+- Rebuild for Python 2.6
+
 * Sun Sep  2 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.2.b
 - Update for python-setuptools changes in rawhide
 
