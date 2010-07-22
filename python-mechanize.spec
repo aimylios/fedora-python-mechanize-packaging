@@ -4,7 +4,7 @@
 
 Name:           python-mechanize
 Version:        0.1.10
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -66,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.1.10-4
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.10-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
