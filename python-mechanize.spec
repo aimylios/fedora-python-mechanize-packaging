@@ -1,16 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-%define _ver 0.1.10
-
 Name:           python-mechanize
-Version:        0.1.10
-Release:        4%{?dist}
+Version:        0.2.2
+Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
-License:        BSD
+License:        BSD or ZPLv2.1
 URL:            http://wwwsearch.sourceforge.net/mechanize
-Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{_ver}.tar.gz
+Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
@@ -20,7 +18,6 @@ BuildRequires: python-setuptools-devel
 %else
 BuildRequires: python-setuptools
 %endif
-Requires:       python-clientform
 
 
 %description
@@ -42,7 +39,7 @@ Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 
 
 %prep
-%setup -q -n mechanize-%{_ver}
+%setup -q -n mechanize-%{version}
 
 
 %build
@@ -58,14 +55,22 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%check
+%{__python} test.py
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING.txt README.txt README.html GeneralFAQ.html doc.html examples
+%doc COPYING.txt README.txt docs/ examples/
 %{python_sitelib}/*
 
 
 %changelog
+* Sat Sep 11 2010 Robin Lee <robinlee.sysu@gmail.com> - 0.2.2-1
+- Update to 0.2.2
+- License specified from 'BSD' to 'BSD or ZPLv2.1'
+- Requires: python-clientform removed
+- Add %%check section and run test suite
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.1.10-4
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 
