@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           python-mechanize
-Version:        0.2.2
+Version:        0.2.3
 Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
@@ -65,6 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Oct 21 2010 Luke Macken <lmacken@redhat.com> - 0.2.3-1
+- Update to 0.2.3 (#3645064)
+
 * Sat Sep 11 2010 Robin Lee <robinlee.sysu@gmail.com> - 0.2.2-1
 - Update to 0.2.2
 - License specified from 'BSD' to 'BSD or ZPLv2.1'
