@@ -1,7 +1,7 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           python-mechanize
-Version:        0.2.3
+Version:        0.2.4
 Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
@@ -9,10 +9,16 @@ Group:          System Environment/Libraries
 License:        BSD or ZPLv2.1
 URL:            http://wwwsearch.sourceforge.net/mechanize
 Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
+# missed cgi script for the tests
+# https://github.com/jjlee/mechanize/raw/master/test-tools/cookietest.cgi
+# https://github.com/jjlee/mechanize/issues/#issue/34
+Source1: cookietest.cgi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
 BuildRequires:  python-devel
+# for tests
+BuildRequires:  python-zope-interface python-twisted-web2
 %if 0%{?fedora} >= 8
 BuildRequires: python-setuptools-devel
 %else
@@ -40,6 +46,8 @@ Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 
 %prep
 %setup -q -n mechanize-%{version}
+chmod -x examples/forms/{echo.cgi,example.py,simple.py}
+install -pm 0755 %{SOURCE1} test-tools/
 
 
 %build
@@ -56,7 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %check
-%{__python} test.py
+chmod +x examples/forms/{echo.cgi,example.py,simple.py}
+%{__python} test.py --log-server
+chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 %files
 %defattr(-,root,root,-)
@@ -65,6 +75,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jan  4 2011 Robin Lee <cheeselee@fedoraproject.org> - 0.2.4-1
+- Update to 0.2.4
+- Include a missed cgi script and add python-zope-interface and
+  python-twisted-web2 to BR to run extra tests
+- Remove executable bits from example scripts
+
 * Thu Oct 21 2010 Luke Macken <lmacken@redhat.com> - 0.2.3-1
 - Update to 0.2.3 (#3645064)
 
