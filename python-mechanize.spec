@@ -1,10 +1,10 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-%define _ver 0.1.6b
+%define _ver 0.1.10
 
 Name:           python-mechanize
-Version:        0.1.6
-Release:        0.1.b%{?dist}
+Version:        0.1.10
+Release:        3%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -14,7 +14,12 @@ Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{_ver}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
-BuildRequires:  python-setuptools python-devel
+BuildRequires:  python-devel
+%if 0%{?fedora} >= 8
+BuildRequires: python-setuptools-devel
+%else
+BuildRequires: python-setuptools
+%endif
 Requires:       python-clientform
 
 
@@ -61,6 +66,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.10-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Thu Feb 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Wed Dec 10 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 0.1.10-1
+- Update to 0.1.10
+
+* Sat Nov 29 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 0.1.6-0.3.b
+- Rebuild for Python 2.6
+
+* Sun Sep  2 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.2.b
+- Update for python-setuptools changes in rawhide
+
 * Sat Mar  3 2007 Luke Macken <lmacken@redhat.com> - 0.1.6-0.1.b
 - 0.1.6b
 
