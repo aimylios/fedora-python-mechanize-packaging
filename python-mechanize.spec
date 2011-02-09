@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.2.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -75,6 +75,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %changelog
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Tue Jan  4 2011 Robin Lee <cheeselee@fedoraproject.org> - 0.2.4-1
 - Update to 0.2.4
 - Include a missed cgi script and add python-zope-interface and
