@@ -1,18 +1,14 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Name:           python-mechanize
-Version:        0.2.4
-Release:        2%{?dist}
+Version:        0.2.5
+Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
 License:        BSD or ZPLv2.1
 URL:            http://wwwsearch.sourceforge.net/mechanize
 Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
-# missed cgi script for the tests
-# https://github.com/jjlee/mechanize/raw/master/test-tools/cookietest.cgi
-# https://github.com/jjlee/mechanize/issues/#issue/34
-Source1: cookietest.cgi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
@@ -47,7 +43,6 @@ Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 %prep
 %setup -q -n mechanize-%{version}
 chmod -x examples/forms/{echo.cgi,example.py,simple.py}
-install -pm 0755 %{SOURCE1} test-tools/
 
 
 %build
@@ -75,6 +70,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %changelog
+* Thu Jun 16 2011 Luke Macken <lmacken@redhat.com> - 0.2.5-1
+- Update to 0.2.5 (#692836)
+
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
