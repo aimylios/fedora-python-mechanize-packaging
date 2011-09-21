@@ -14,7 +14,8 @@ BuildArch:      noarch
 
 BuildRequires:  python-devel
 # for tests
-BuildRequires:  python-zope-interface python-twisted-web2
+BuildRequires:  python-zope-interface
+#BuildRequires: python-twisted-web2
 %if 0%{?fedora} >= 8
 BuildRequires: python-setuptools-devel
 %else
