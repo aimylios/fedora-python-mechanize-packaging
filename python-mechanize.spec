@@ -1,26 +1,25 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
-%define _ver 0.1.10
-
 Name:           python-mechanize
-Version:        0.1.10
-Release:        3%{?dist}
+Version:        0.2.5
+Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
-License:        BSD
+License:        BSD or ZPLv2.1
 URL:            http://wwwsearch.sourceforge.net/mechanize
-Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{_ver}.tar.gz
+Source0:        http://wwwsearch.sourceforge.net/mechanize/src/mechanize-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 
 BuildRequires:  python-devel
+# for tests
+BuildRequires:  python-zope-interface python-twisted-web2
 %if 0%{?fedora} >= 8
 BuildRequires: python-setuptools-devel
 %else
 BuildRequires: python-setuptools
 %endif
-Requires:       python-clientform
 
 
 %description
@@ -42,7 +41,8 @@ Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 
 
 %prep
-%setup -q -n mechanize-%{_ver}
+%setup -q -n mechanize-%{version}
+chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %build
@@ -58,14 +58,42 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%check
+chmod +x examples/forms/{echo.cgi,example.py,simple.py}
+%{__python} test.py --log-server
+chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING.txt README.txt README.html GeneralFAQ.html doc.html examples
+%doc COPYING.txt README.txt docs/ examples/
 %{python_sitelib}/*
 
 
 %changelog
+* Thu Jun 16 2011 Luke Macken <lmacken@redhat.com> - 0.2.5-1
+- Update to 0.2.5 (#692836)
+
+* Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Tue Jan  4 2011 Robin Lee <cheeselee@fedoraproject.org> - 0.2.4-1
+- Update to 0.2.4
+- Include a missed cgi script and add python-zope-interface and
+  python-twisted-web2 to BR to run extra tests
+- Remove executable bits from example scripts
+
+* Thu Oct 21 2010 Luke Macken <lmacken@redhat.com> - 0.2.3-1
+- Update to 0.2.3 (#3645064)
+
+* Sat Sep 11 2010 Robin Lee <robinlee.sysu@gmail.com> - 0.2.2-1
+- Update to 0.2.2
+- License specified from 'BSD' to 'BSD or ZPLv2.1'
+- Requires: python-clientform removed
+- Add %%check section and run test suite
+
+* Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 0.1.10-4
+- Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.1.10-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
