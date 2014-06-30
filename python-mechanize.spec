@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.2.5
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -15,11 +15,7 @@ BuildArch:      noarch
 BuildRequires:  python-devel
 # for tests
 BuildRequires:  python-zope-interface python-twisted-web2
-%if 0%{?fedora} >= 8
-BuildRequires: python-setuptools-devel
-%else
 BuildRequires: python-setuptools
-%endif
 
 
 %description
@@ -74,6 +70,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %changelog
+* Mon Jun 30 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 0.2.5-8
+- Replace the python-setuptools-devel BR with python-setuptools
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.5-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
