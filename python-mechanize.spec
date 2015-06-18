@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.2.5
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -70,6 +70,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %changelog
+* Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.5-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Mon Jun 30 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 0.2.5-8
 - Replace the python-setuptools-devel BR with python-setuptools
 
