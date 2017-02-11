@@ -2,7 +2,7 @@
 
 Name:           python-mechanize
 Version:        0.2.5
-Release:        11%{?dist}
+Release:        12%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -70,6 +70,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 
 %changelog
+* Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.2.5-12
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.2.5-11
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
