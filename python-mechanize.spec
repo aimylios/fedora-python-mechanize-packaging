@@ -3,7 +3,7 @@
 
 Name:           python-mechanize
 Version:        0.3.5
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -14,8 +14,8 @@ Source0:        https://github.com/python-mechanize/mechanize/archive/v%{version
 BuildArch:      noarch
 BuildRequires:  python2-devel
 # for tests
-BuildRequires:  python-zope-interface python-twisted-web2
-BuildRequires:  python-setuptools python2-html5lib
+BuildRequires:  python2-zope-interface python2-twisted
+BuildRequires:  python2-setuptools python2-html5lib
 
 %description
 Stateful programmatic web browsing, after Andy Lester's Perl module
@@ -76,6 +76,10 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 %{python2_sitelib}/*
 
 %changelog
+* Thu Jan 25 2018 Iryna Shcherbina <ishcherb@redhat.com> - 0.3.5-3
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
