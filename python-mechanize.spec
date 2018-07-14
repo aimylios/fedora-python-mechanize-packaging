@@ -3,7 +3,7 @@
 
 Name:           python-mechanize
 Version:        0.3.5
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -76,6 +76,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 %{python2_sitelib}/*
 
 %changelog
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
