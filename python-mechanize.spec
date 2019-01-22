@@ -2,8 +2,8 @@
 %global sum Stateful programmatic web browsing
 
 Name:           python-mechanize
-Version:        0.3.5
-Release:        5%{?dist}
+Version:        0.4.0
+Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
 Group:          System Environment/Libraries
@@ -76,6 +76,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 %{python2_sitelib}/*
 
 %changelog
+* Tue Jan 22 2019 Mohan Boddu <mboddu@bhujji.com> - 0.4.0-1
+- Update to version 0.4.0
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.3.5-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
