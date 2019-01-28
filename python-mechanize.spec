@@ -6,7 +6,6 @@ Version:        0.4.0
 Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
-Group:          System Environment/Libraries
 License:        BSD or ZPLv2.1
 URL:            https://github.com/python-mechanize/
 Source0:        https://github.com/python-mechanize/mechanize/archive/v%{version}.tar.gz
