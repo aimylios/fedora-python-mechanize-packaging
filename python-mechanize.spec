@@ -3,7 +3,7 @@
 
 Name:           python-mechanize
 Version:        0.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Stateful programmatic web browsing
 
 License:        BSD or ZPLv2.1
@@ -75,6 +75,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 %{python2_sitelib}/*
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Tue Jan 22 2019 Mohan Boddu <mboddu@bhujji.com> - 0.4.0-1
 - Update to version 0.4.0
 
