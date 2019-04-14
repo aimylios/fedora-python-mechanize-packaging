@@ -2,7 +2,7 @@
 %global sum Stateful programmatic web browsing
 
 Name:           python-mechanize
-Version:        0.4.1
+Version:        0.4.2
 Release:        1%{?dist}
 Summary:        Stateful programmatic web browsing
 
@@ -75,6 +75,9 @@ chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 %{python2_sitelib}/*
 
 %changelog
+* Sun Apr 14 2019 Kevin Fenzi <kevin@scrye.com> - 0.4.2-1
+- Update to 0.4.2. Fixes bug #1699201
+
 * Sat Mar 16 2019 Kevin Fenzi <kevin@scrye.com> - 0.4.1-1
 - Update to 0.4.1. Fixes bug #1432447
 
