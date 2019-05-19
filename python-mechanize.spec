@@ -3,7 +3,7 @@
 
 Name:           python-mechanize
 Version:        0.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Stateful programmatic web browsing
 
 License:        BSD or ZPLv2.1
@@ -12,9 +12,14 @@ Source0:        https://github.com/python-mechanize/mechanize/archive/v%{version
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
+BuildRequires:  python3-devel
 # for tests
-BuildRequires:  python2-zope-interface python2-twisted
-BuildRequires:  python2-setuptools python2-html5lib
+BuildRequires:  python2-html5lib
+BuildRequires:  python2-twisted
+BuildRequires:  python2-zope-interface
+BuildRequires:  python3-html5lib
+BuildRequires:  python3-twisted
+BuildRequires:  python3-zope-interface
 
 %description
 Stateful programmatic web browsing, after Andy Lester's Perl module
@@ -54,27 +59,58 @@ Much of the code originally derived from Perl code by Gisle Aas
 (libwww-perl), Johnny Lee (MSIE Cookie support) and last but not least
 Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
 
+%package -n python3-%{srcname}
+Summary:        %{sum}
+%{?python_provide:%python_provide python3-%{srcname}}
+
+%description -n python3-%{srcname}
+Stateful programmatic web browsing, after Andy Lester's Perl module
+WWW::Mechanize.
+
+The library is layered: mechanize.Browser (stateful web browser),
+mechanize.UserAgent (configurable URL opener), plus urllib2 handlers.
+
+Features include: ftp:, http: and file: URL schemes, browser history,
+high-level hyperlink and HTML form support, HTTP cookies, HTTP-EQUIV and
+Refresh, Referer [sic] header, robots.txt, redirections, proxies, and
+Basic and Digest HTTP authentication.  mechanize's response objects are
+(lazily-) .seek()able and still work after .close().
+
+Much of the code originally derived from Perl code by Gisle Aas
+(libwww-perl), Johnny Lee (MSIE Cookie support) and last but not least
+Andy Lester (WWW::Mechanize).  urllib2 was written by Jeremy Hylton.
+
 %prep
 %autosetup -n %{srcname}-%{version}
 chmod -x examples/forms/{echo.cgi,example.py,simple.py}
 
 %build
 %py2_build
+%py3_build
 
 %install
 %py2_install
+%py3_install
 
 %check
-#chmod +x examples/forms/{echo.cgi,example.py,simple.py}
-#{__python} run_tests.py --log-server
-#chmod -x examples/forms/{echo.cgi,example.py,simple.py}
+%{__python2} run_tests.py
+%{__python3} run_tests.py
 
 %files -n python2-%{srcname}
 %license LICENSE
 %doc README.rst ChangeLog COPYRIGHT
 %{python2_sitelib}/*
 
+%files -n python3-%{srcname}
+%license LICENSE
+%doc README.rst ChangeLog COPYRIGHT
+%{python3_sitelib}/*
+
 %changelog
+* Sun May 19 2019 Xxx Xxx <xxx@xxx.xxx> - 0.4.2-2
+- Add python3 subpackage
+- Enable tests
+
 * Sun Apr 14 2019 Kevin Fenzi <kevin@scrye.com> - 0.4.2-1
 - Update to 0.4.2. Fixes bug #1699201
 
